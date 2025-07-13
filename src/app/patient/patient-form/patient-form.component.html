@@ -1,0 +1,47 @@
+<form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+  <!-- Name -->
+  <div>
+    <label for="name">Name</label>
+    <input id="name" formControlName="name" placeholder="Name" type="text" />
+    <div *ngIf="patientForm.get('name')?.hasError('required') && patientForm.get('name')?.touched" style="color:red">
+      Name is required
+    </div>
+  </div>
+
+  <!-- Gender -->
+  <div>
+    <label for="gender">Gender</label>
+    <select id="gender" formControlName="gender">
+      <option value="" disabled selected>Select Gender</option>
+      <option value="MALE">Male</option>
+      <option value="FEMALE">Female</option>
+      <option value="OTHER">Other</option>
+    </select>
+    <div *ngIf="patientForm.get('gender')?.hasError('required') && patientForm.get('gender')?.touched" style="color:red">
+      Gender is required
+    </div>
+  </div>
+
+  <!-- Date of Birth -->
+  <div>
+    <label for="dateOfBirth">Date of Birth</label>
+    <input id="dateOfBirth" type="date" formControlName="dateOfBirth" />
+    <div *ngIf="patientForm.get('dateOfBirth')?.hasError('required') && patientForm.get('dateOfBirth')?.touched" style="color:red">
+      Date of Birth is required
+    </div>
+  </div>
+
+  <!-- Unique ID -->
+  <div>
+    <label for="uniqueId">Unique ID (e.g., Aadhar)</label>
+    <input id="uniqueId" formControlName="uniqueId" placeholder="Unique ID" type="text" />
+    <div *ngIf="patientForm.get('uniqueId')?.hasError('required') && patientForm.get('uniqueId')?.touched" style="color:red">
+      Unique ID is required
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <div>
+    <button type="submit" [disabled]="patientForm.invalid">Register</button>
+  </div>
+</form>

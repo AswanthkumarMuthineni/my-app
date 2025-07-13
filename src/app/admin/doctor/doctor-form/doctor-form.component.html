@@ -1,0 +1,35 @@
+<p>doctor-form works!</p>
+<form [formGroup]="doctorForm" (ngSubmit)="onSubmit()">
+  <!-- Doctor Name Input -->
+  <div>
+    <label for="name">Name</label>
+    <input id="name" formControlName="name" placeholder="Name" type="text">
+    <div *ngIf="doctorForm.get('name')?.hasError('required') && doctorForm.get('name')?.touched">
+      <small style="color: red;">Name is required</small>
+    </div>
+  </div>
+
+  <!-- Doctor Qualifications Input -->
+  <div>
+    <label for="qualifications">Qualifications</label>
+    <input id="qualifications" formControlName="qualifications" placeholder="Qualifications" type="text">
+    <div *ngIf="doctorForm.get('qualifications')?.hasError('required') && doctorForm.get('qualifications')?.touched">
+      <small style="color: red;">Qualifications are required</small>
+    </div>
+  </div>
+
+  <!-- Years of Experience Input -->
+  <div>
+    <label for="yearsOfExperience">Years of Experience</label>
+    <input id="yearsOfExperience" formControlName="yearsOfExperience" placeholder="Years of Experience" type="number">
+    <div *ngIf="doctorForm.get('yearsOfExperience')?.hasError('required') && doctorForm.get('yearsOfExperience')?.touched">
+      <small style="color: red;">Experience is required</small>
+    </div>
+    <div *ngIf="doctorForm.get('yearsOfExperience')?.hasError('min') && doctorForm.get('yearsOfExperience')?.touched">
+      <small style="color: red;">Experience must be non-negative</small>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" [disabled]="doctorForm.invalid">Register</button>
+</form>

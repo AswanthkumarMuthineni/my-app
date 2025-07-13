@@ -1,0 +1,27 @@
+<div>
+  <label for="specialization">Specialization</label>
+  <select id="specialization" [(ngModel)]="specializationId" name="specialization">
+    <option value="" disabled selected>Select Specialization</option>
+    <option value="1">Cardiologist</option>
+    <!-- add more options as needed -->
+  </select>
+</div>
+
+<div>
+  <label for="hospital">Hospital</label>
+  <select id="hospital" [(ngModel)]="hospitalId" name="hospital">
+    <option value="" disabled selected>Select Hospital</option>
+    <option value="1">City Hospital</option>
+    <!-- add more options as needed -->
+  </select>
+</div>
+
+<div>
+  <label for="date">Date</label>
+  <input id="date" type="date" [(ngModel)]="date" name="date" />
+</div>
+
+<button (click)="search()">Search</button>
+
+<!-- Your table component -->
+<app-table [data]="doctors"></app-table>

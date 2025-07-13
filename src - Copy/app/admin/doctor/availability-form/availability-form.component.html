@@ -1,0 +1,42 @@
+<form [formGroup]="availabilityForm" (ngSubmit)="onSubmit()">
+  <!-- Doctor ID Input -->
+  <div>
+    <label for="doctorId">Doctor ID</label>
+    <input id="doctorId" formControlName="doctorId" placeholder="Doctor ID" type="text">
+    <div *ngIf="availabilityForm.get('doctorId')?.hasError('required') && availabilityForm.get('doctorId')?.touched">
+      <small style="color: red;">Doctor ID is required</small>
+    </div>
+  </div>
+
+  <!-- Hospital ID Input -->
+  <div>
+    <label for="hospitalId">Hospital ID</label>
+    <input id="hospitalId" formControlName="hospitalId" placeholder="Hospital ID" type="text">
+    <div *ngIf="availabilityForm.get('hospitalId')?.hasError('required') && availabilityForm.get('hospitalId')?.touched">
+      <small style="color: red;">Hospital ID is required</small>
+    </div>
+  </div>
+
+  <!-- Start Time Input -->
+  <div>
+    <label for="startTime">Start Time</label>
+    <input id="startTime" type="datetime-local" formControlName="startTime" placeholder="Start Time">
+    <div *ngIf="availabilityForm.get('startTime')?.hasError('required') && availabilityForm.get('startTime')?.touched">
+      <small style="color: red;">Start time is required</small>
+    </div>
+  </div>
+
+  <!-- End Time Input -->
+  <div>
+    <label for="endTime">End Time</label>
+    <input id="endTime" type="datetime-local" formControlName="endTime" placeholder="End Time">
+    <div *ngIf="availabilityForm.get('endTime')?.hasError('required') && availabilityForm.get('endTime')?.touched">
+      <small style="color: red;">End time is required</small>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <div>
+    <button type="submit" [disabled]="availabilityForm.invalid">Add Availability</button>
+  </div>
+</form>
